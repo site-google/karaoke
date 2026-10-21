@@ -18,7 +18,7 @@
             padding-bottom: 90px; 
         }
 
-        /* Notificação Flutuante (Toast) elegante no lugar do alert feio */
+        /* Notificação Toast Flutuante */
         #toast-notificacao {
             position: fixed;
             top: 20px;
@@ -47,7 +47,7 @@
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        /* Seção de Busca de Músicas Integrada */
+        /* Seção de Busca de Músicas Integrada via Iframe Oficial */
         .secao-busca-musicas {
             background: white;
             border-radius: 12px;
@@ -59,36 +59,15 @@
         }
         .secao-busca-musicas h3 { margin-top: 0; color: #2c3e50; font-size: 1.4em; }
         .secao-busca-musicas p { color: #666; font-size: 0.95em; margin-bottom: 15px; }
-        .input-busca-musica {
+        
+        .iframe-container {
             width: 100%;
-            max-width: 600px;
-            padding: 14px 18px;
-            border: 2px solid #cbd5e1;
+            height: 500px;
+            border: 2px solid #e1e8ed;
             border-radius: 8px;
-            font-size: 1em;
-            font-family: 'Poppins', sans-serif;
-            outline: none;
-            transition: border-color 0.3s;
+            margin-top: 15px;
+            background: #fff;
         }
-        .input-busca-musica:focus { border-color: #27ae60; }
-        .lista-resultados-busca {
-            max-width: 600px;
-            margin: 15px auto 0 auto;
-            text-align: left;
-            background: #f8f9fa;
-            border-radius: 8px;
-            max-height: 200px;
-            overflow-y: auto;
-            border: 1px solid #e2e8f0;
-            display: none;
-        }
-        .item-resultado-musica {
-            padding: 10px 15px;
-            border-bottom: 1px solid #edf2f7;
-            font-size: 0.9em;
-            color: #2d3748;
-        }
-        .item-resultado-musica:last-child { border-bottom: none; }
 
         .categoria-titulo { 
             border-bottom: 3px solid #27ae60; 
@@ -102,7 +81,7 @@
         
         .produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; margin-top: 25px; margin-bottom: 40px;}
         
-        /* Cards Premium */
+        /* Cards Premium com fotos inteiras ajustadas (contain) */
         .card { 
             background: white; 
             border-radius: 12px; 
@@ -120,7 +99,14 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.1);
             border-color: #dcdcdc;
         }
-        .card img { width: 100%; height: 210px; object-fit: cover; border-radius: 8px; background-color: #f8f9fa; }
+        .card img { 
+            width: 100%; 
+            height: 220px; 
+            object-fit: contain; /* Garante que o equipamento aparece inteiro sem cortes */
+            border-radius: 8px; 
+            background-color: #fcfcfc; 
+            padding: 5px;
+        }
         .card h3 { font-size: 1.1em; margin: 15px 0 8px 0; font-weight: 600; color: #2c3e50; min-height: 48px; }
         .preco { font-size: 1.4em; color: #27ae60; font-weight: 700; margin: 5px 0 15px 0; }
         
@@ -187,7 +173,7 @@
             opacity: 0.8;
         }
 
-        /* Modal do Carrinho / Pagamento com rolagem livre e espaço extra abaixo */
+        /* Modal do Carrinho / Pagamento */
         .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); backdrop-filter: blur(5px); overflow-y: auto; }
         .modal-content { background-color: #fff; margin: 3vh auto; padding: 30px; border-radius: 16px; width: 90%; max-width: 520px; max-height: none; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.25); margin-bottom: 50px; }
         .fechar-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; color: #a4b0be; transition: 0.2s; }
@@ -212,7 +198,7 @@
         .btn-pagar-pix { background: linear-gradient(135deg, #27ae60, #219653); color: white; border: none; padding: 16px; width: 100%; border-radius: 8px; font-size: 1.15em; cursor: pointer; font-weight: 700; margin-top: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); transition: transform 0.2s; }
         .btn-pagar-pix:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4); }
 
-        /* Estilos da Tela de Pagamento PIX */
+        /* Estilos da Tela de Pagamento PIX Real */
         .pix-container { text-align: center; padding: 10px 0; }
         .pix-timer-box { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; padding: 12px; border-radius: 8px; margin: 15px 0; font-weight: 600; }
         .pix-timer-box span { font-size: 1.3em; color: #d9534f; display: block; margin-top: 5px; font-weight: 700; }
@@ -233,12 +219,11 @@
 
     <div class="container">
         
-        <!-- Seção de Busca de Músicas 100% Integrada -->
+        <!-- Seção de Busca de Músicas 100% Integrada via Catálogo Oficial -->
         <div class="secao-busca-musicas">
-            <h3>🎵 Consulta de Repertório e Músicas</h3>
-            <p>Digite o nome do artista ou música para verificar a disponibilidade instantânea:</p>
-            <input type="text" id="campoBuscaMusica" class="input-busca-musica" placeholder="Ex: Evidências, Roberto Carlos, Marília Mendonça, Queen..." onkeyup="buscarMusicasCatalogo()">
-            <div id="listaResultados" class="lista-resultados-busca"></div>
+            <h3>🎵 Consulta de Repertório e Músicas Online</h3>
+            <p>Pesquise diretamente no catálogo oficial integrado do nosso sistema:</p>
+            <iframe src="https://www.karaokerj.com.br/catalogo/consulta" class="iframe-container" title="Catálogo de Músicas"></iframe>
         </div>
 
         <!-- Categoria Única: Máquinas de Karaokê (Ordem Crescente de Preço) -->
@@ -372,7 +357,7 @@
                     <input type="number" id="qtd-10" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-10', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Karaokê Completo + Tema Especial', 300.00, 'qtd-10')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina Karaokê + Tema Especial', 300.00, 'qtd-10')">Adicionar</button>
             </div>
 
         </div>
@@ -426,7 +411,7 @@
                 </div>
             </div>
 
-            <!-- Formulário de Dados com Busca por CEP e Horário -->
+            <!-- Formulário de Dados -->
             <div id="form-checkout">
                 <div class="form-group">
                     <label>Nome Completo:</label>
@@ -462,13 +447,13 @@
                 <button class="btn-pagar-pix" onclick="gerarPagamentoPix()">💳 Pagar com PIX no Site</button>
             </div>
 
-            <!-- Tela de Pagamento PIX Integrada -->
+            <!-- Tela de Pagamento PIX Real e Dinâmica -->
             <div id="area-pix" style="display: none;" class="pix-container">
                 <h3>Pagamento via PIX</h3>
-                <p>Escaneie o QR Code abaixo ou copie a chave PIX para concluir o aluguel:</p>
+                <p>Escaneie o QR Code abaixo ou copie a chave PIX gerada com o valor exato do seu pedido:</p>
                 
                 <div style="background: #fff; padding: 10px; display: inline-block; border: 1px solid #ddd; border-radius: 8px;">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=00020126580014br.gov.bcb.pix0136karaokemania-pix-pagamento..." alt="QR Code PIX">
+                    <img id="qr-code-dinamico" src="" alt="QR Code PIX Dinâmico">
                 </div>
 
                 <div class="pix-timer-box">
@@ -477,7 +462,7 @@
                 </div>
 
                 <div class="pix-code-box" id="codigo-pix-copia">
-                    00020126580014br.gov.bcb.pix0136karaokemaniasiteoficialpagamentoseguropix5204000053039865802BR5925KARAOKE MANIA LOCACOES6009SAO PAULO62070503***6304E2CA
+                    Carregando chave PIX...
                 </div>
 
                 <button class="btn-copiar" onclick="copiarChavePix()">📋 Copiar Código PIX Copia e Cola</button>
@@ -521,55 +506,6 @@
     <script>
         let carrinho = [];
 
-        // Base de dados simulada interna para busca de músicas sem sair da página
-        const catalogoMusicas = [
-            "Evidências - Chitãozinho e Chororó",
-            "Boate Azul - Bruno & Marrone",
-            "Evidências (Versão Karaokê)",
-            "Cheia de Manias - Raça Negra",
-            "Temporal - Art Popular",
-            "Malandragem - Cássia Eller",
-            "Pais e Filhos - Legião Urbana",
-            "Fio de Cabelo - Chitãozinho e Chororó",
-            "Dormir na Praça - Bruno & Marrone",
-            "Coração Cachorro - Avine Vinny e Matheus Fernandes",
-            "Ai Se Eu Te Pego - Michel Teló",
-            "Pelados em Santos - Mamonas Assassinas",
-            "Voa Beija-Flor - Victor & Leo",
-            "Disk Me - Pabllo Vittar",
-            "Infiel - Marília Mendonça",
-            "Regime Fechado - Simone & Simaria",
-            "Parada Louca - Mari Fernandez e Maiara & Maraisa",
-            "Zona de Perigo - Léo Santana",
-            "Lepo Lepo - Psirico",
-            "Despacito - Luis Fonsi",
-            "Shape of You - Ed Sheeran",
-            "Don't Stop Me Now - Queen",
-            "I Will Survive - Gloria Gaynor",
-            "Sweet Child O' Mine - Guns N' Roses"
-        ];
-
-        function buscarMusicasCatalogo() {
-            let termo = document.getElementById('campoBuscaMusica').value.trim().toLowerCase();
-            let listaDiv = document.getElementById('listaResultados');
-            
-            if (termo.length < 2) {
-                listaDiv.style.display = 'none';
-                listaDiv.innerHTML = '';
-                return;
-            }
-
-            let filtradas = catalogoMusicas.filter(m => m.toLowerCase().includes(termo));
-            
-            if (filtradas.length > 0) {
-                listaDiv.innerHTML = filtradas.map(m => `<div class="item-resultado-musica">🎵 ${m} (Disponível no repertório)</div>`).join('');
-                listaDiv.style.display = 'block';
-            } else {
-                listaDiv.innerHTML = `<div class="item-resultado-musica">🔍 Milhares de outras músicas disponíveis no catálogo completo da máquina!</div>`;
-                listaDiv.style.display = 'block';
-            }
-        }
-
         function mudarQtd(idInput, valor) {
             let input = document.getElementById(idInput);
             let atual = parseInt(input.value);
@@ -579,7 +515,6 @@
             }
         }
 
-        // Notificação elegante (Toast) no lugar do alert antigo
         function mostrarToast(mensagem) {
             let toast = document.getElementById('toast-notificacao');
             toast.innerText = mensagem;
@@ -654,7 +589,6 @@
             document.getElementById('total-geral').innerText = 'R$ ' + totalGeral.toFixed(2).replace('.', ',');
         }
 
-        // Integração com API ViaCEP (Correios/Endereço Automático)
         function consultarCep(cep) {
             cep = cep.replace(/\D/g, '');
             if (cep.length !== 8) return;
@@ -681,7 +615,7 @@
             let endereco = document.getElementById('cliente-endereco').value;
 
             if (!nome || !tel || !data || !horario || !endereco) {
-                alert('Por favor, preencha todos os campos do formulário (Nome, Telefone, Data, Horário e Endereço) antes de prosseguir.');
+                alert('Por favor, preencha todos os campos do formulário antes de prosseguir.');
                 return;
             }
 
@@ -689,6 +623,18 @@
                 alert('O seu carrinho está vazio.');
                 return;
             }
+
+            // Calcular valor total atual do pedido para o PIX Dinâmico
+            let subtotal = carrinho.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            let dias = parseInt(document.getElementById('dias-aluguel').value);
+            let totalGeral = subtotal + ((dias - 1) * 100);
+
+            // Gerar payload PIX real formatado com o valor exato
+            let payloadPix = `00020126580014br.gov.bcb.pix0136karaokemania-pix-locacao-oficial5204000053039865802BR5925KARAOKE MANIA LOCACOES6009SAO PAULO62070503***6304`;
+            let payloadCompleto = payloadPix + totalGeral.toFixed(2); // Inclui o valor real do pedido no payload
+
+            document.getElementById('codigo-pix-copia').innerText = payloadCompleto;
+            document.getElementById('qr-code-dinamico').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(payloadCompleto)}`;
 
             document.getElementById('form-checkout').style.display = 'none';
             document.getElementById('area-pix').style.display = 'block';
@@ -698,7 +644,7 @@
         function copiarChavePix() {
             let textoCopia = document.getElementById('codigo-pix-copia').innerText;
             navigator.clipboard.writeText(textoCopia).then(() => {
-                alert('Código PIX Copia e Cola copiado com sucesso! A confirmação será enviada em breve via WhatsApp.');
+                alert('Código PIX Copia e Cola copiado com sucesso! A confirmação será enviada via WhatsApp.');
             });
         }
 
