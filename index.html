@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karaokê Mania - Aluguel de Máquinas de Karaokê</title>
+    <title>Aluguel para Festas</title>
     
     <!-- Fonte Moderna do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -11,127 +11,100 @@
     <style>
         body { 
             font-family: 'Poppins', sans-serif; 
-            background-color: #f4f6f9; 
+            background-color: #f8f9fa; 
             color: #333; 
             margin: 0; 
             padding: 0; 
-            padding-bottom: 90px; 
+            padding-bottom: 80px; 
         }
-
-        /* Notificação Toast Flutuante */
-        #toast-notificacao {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #27ae60;
+        
+        /* Banner Fixo e Piscando no Topo */
+        .banner-ofertas {
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+            background: linear-gradient(90deg, #27ae60, #2ecc71); 
             color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: 9999;
+            text-align: center;
+            padding: 12px;
             font-weight: 600;
-            display: none;
-            transition: opacity 0.3s ease;
+            font-size: 1.1em;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .texto-piscando { animation: piscar 1.5s infinite; }
+        @keyframes piscar {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
-        /* Header Premium */
+        /* Header mais moderno */
         header { 
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); 
+            background: linear-gradient(135deg, #1a252f 0%, #2c3e50 100%); 
             color: white; 
             text-align: center; 
-            padding: 50px 20px; 
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            padding: 30px 20px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        header h1 { margin: 0 0 10px 0; font-weight: 700; letter-spacing: 1px; font-size: 2.4em; }
-        header p { margin: 0; opacity: 0.85; font-weight: 300; font-size: 1.1em; }
+        header h1 { margin: 0 0 10px 0; font-weight: 700; letter-spacing: 1px; }
+        header p { margin: 0; opacity: 0.8; font-weight: 300; }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        /* Seção de Busca de Músicas Integrada via Iframe Oficial */
-        .secao-busca-musicas {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            margin-top: 35px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border: 1px solid #e1e8ed;
-            text-align: center;
-        }
-        .secao-busca-musicas h3 { margin-top: 0; color: #2c3e50; font-size: 1.4em; }
-        .secao-busca-musicas p { color: #666; font-size: 0.95em; margin-bottom: 15px; }
-        
-        .iframe-container {
-            width: 100%;
-            height: 500px;
-            border: 2px solid #e1e8ed;
-            border-radius: 8px;
-            margin-top: 15px;
-            background: #fff;
-        }
-
         .categoria-titulo { 
-            border-bottom: 3px solid #27ae60; 
+            border-bottom: 3px solid #3498db; 
             padding-bottom: 10px; 
-            margin-top: 45px; 
+            margin-top: 50px; 
             color: #2c3e50; 
             font-weight: 700;
             display: inline-block;
-            font-size: 1.6em;
         }
         
-        .produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; margin-top: 25px; margin-bottom: 40px;}
+        .produtos { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; margin-top: 25px; margin-bottom: 40px;}
         
-        /* Cards Premium com fotos inteiras ajustadas (contain) */
+        /* Cards Modernizados */
         .card { 
             background: white; 
             border-radius: 12px; 
-            padding: 18px; 
+            padding: 15px; 
             text-align: center; 
-            box-shadow: 0 6px 18px rgba(0,0,0,0.04); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04); 
             display: flex; 
             flex-direction: column; 
             justify-content: space-between; 
             transition: all 0.3s ease; 
-            border: 1px solid #eaeaea;
+            border: 1px solid #f1f2f6;
         }
         .card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            border-color: #dcdcdc;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
         }
-        .card img { 
-            width: 100%; 
-            height: 220px; 
-            object-fit: contain; /* Garante que o equipamento aparece inteiro sem cortes */
-            border-radius: 8px; 
-            background-color: #fcfcfc; 
-            padding: 5px;
-        }
-        .card h3 { font-size: 1.1em; margin: 15px 0 8px 0; font-weight: 600; color: #2c3e50; min-height: 48px; }
+        .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; background-color: #f1f2f6; }
+        .card h3 { font-size: 1.1em; margin: 15px 0 5px 0; font-weight: 600; color: #2c3e50; min-height: 45px; }
         .preco { font-size: 1.4em; color: #27ae60; font-weight: 700; margin: 5px 0 15px 0; }
         
-        /* Controles de Quantidade */
+        /* Controles de Quantidade mais "Clean" */
         .controle-qtd { display: flex; align-items: center; justify-content: center; margin-bottom: 15px; gap: 10px; }
         .btn-qtd { background-color: #f1f2f6; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer; color: #2c3e50; font-weight: bold; font-size: 1.2em; display: flex; align-items: center; justify-content: center; transition: 0.2s; }
         .btn-qtd:hover { background-color: #dfe4ea; }
-        .input-qtd { width: 45px; text-align: center; border: 1px solid #dfe4ea; border-radius: 8px; padding: 8px 0; font-size: 1em; font-weight: 600; color: #2c3e50; }
+        .input-qtd { width: 45px; text-align: center; border: 1px solid #dfe4ea; border-radius: 8px; padding: 8px 0; font-size: 1em; font-weight: 600; color: #2c3e50; -moz-appearance: textfield; }
+        .input-qtd::-webkit-outer-spin-button, .input-qtd::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
 
-        .btn-add { background-color: #27ae60; color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; font-size: 1em; margin-top: auto; transition: background 0.3s; }
-        .btn-add:hover { background-color: #219653; }
+        .btn-add { background-color: #3498db; color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; font-size: 1em; margin-top: auto; transition: background 0.3s; }
+        .btn-add:hover { background-color: #2980b9; }
         
         /* Botão Carrinho Flutuante */
         .btn-flutuante {
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background: linear-gradient(135deg, #27ae60, #219653);
+            background: linear-gradient(135deg, #e67e22, #d35400);
             color: white;
             border: none;
-            padding: 16px 32px;
+            padding: 15px 30px;
             border-radius: 50px;
-            font-size: 1.15em;
+            font-size: 1.1em;
             font-weight: 700;
-            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.4);
+            box-shadow: 0 8px 25px rgba(230, 126, 34, 0.4);
             cursor: pointer;
             z-index: 1000;
             display: flex;
@@ -140,42 +113,37 @@
             transition: transform 0.2s;
         }
         .btn-flutuante:hover { transform: scale(1.05); }
-        .badge { background: white; color: #27ae60; padding: 4px 10px; border-radius: 20px; font-size: 0.9em; font-weight: 800; }
+        .badge { background: white; color: #d35400; padding: 4px 10px; border-radius: 20px; font-size: 0.9em; font-weight: 800; }
 
-        /* Rodapé de Alta Segurança e Confiança */
+        /* Rodapé de Segurança Profissional */
         .site-footer {
-            background-color: #0d1b2a;
-            color: #a0aec0;
-            padding: 50px 20px 30px 20px;
+            background-color: #1a252f;
+            color: #bdc3c7;
+            text-align: center;
+            padding: 40px 20px;
             margin-top: 60px;
             border-top: 4px solid #27ae60;
         }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-            text-align: left;
+        .footer-seguro {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            color: #2ecc71;
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 20px;
         }
-        .footer-col h4 { color: #fff; margin-bottom: 15px; font-size: 1.1em; border-bottom: 2px solid #27ae60; padding-bottom: 8px; display: inline-block; }
-        .footer-col p { font-size: 0.9em; line-height: 1.6; margin: 8px 0; }
-        .selos-seguranca { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 15px; }
-        .selo-badge { background: #1b263b; border: 1px solid #415a77; padding: 8px 12px; border-radius: 6px; font-size: 0.8em; color: #e0e1dd; font-weight: 600; display: flex; align-items: center; gap: 6px; }
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-            border-top: 1px solid #1b263b;
-            padding-top: 25px;
-            font-size: 0.85em;
-            opacity: 0.8;
+        .footer-info p {
+            margin: 5px 0;
+            font-size: 0.95em;
+            line-height: 1.6;
         }
+        .footer-info strong { color: #fff; font-size: 1.1em; letter-spacing: 0.5px;}
 
-        /* Modal do Carrinho / Pagamento */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); backdrop-filter: blur(5px); overflow-y: auto; }
-        .modal-content { background-color: #fff; margin: 3vh auto; padding: 30px; border-radius: 16px; width: 90%; max-width: 520px; max-height: none; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.25); margin-bottom: 50px; }
+        /* Modal do Carrinho */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
+        .modal-content { background-color: #fff; margin: 3vh auto; padding: 30px; border-radius: 16px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); }
         .fechar-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; color: #a4b0be; transition: 0.2s; }
         .fechar-modal:hover { color: #2f3640; }
 
@@ -190,480 +158,546 @@
         .form-group { margin-bottom: 18px; text-align: left; }
         .form-group label { display: block; font-size: 0.9em; margin-bottom: 8px; font-weight: 600; color: #2c3e50; }
         .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ced6e0; border-radius: 8px; box-sizing: border-box; font-family: 'Poppins', sans-serif; font-size: 1em; transition: border-color 0.3s; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: #27ae60; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #3498db; }
         .form-group input[readonly] { background-color: #f1f2f6; color: #747d8c; }
         
         .grid-2-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 
-        .btn-pagar-pix { background: linear-gradient(135deg, #27ae60, #219653); color: white; border: none; padding: 16px; width: 100%; border-radius: 8px; font-size: 1.15em; cursor: pointer; font-weight: 700; margin-top: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); transition: transform 0.2s; }
-        .btn-pagar-pix:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4); }
+        .btn-whats { background: linear-gradient(135deg, #25D366, #1ebd5a); color: white; border: none; padding: 16px; width: 100%; border-radius: 8px; font-size: 1.2em; cursor: pointer; font-weight: 700; margin-top: 15px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3); transition: transform 0.2s; }
+        .btn-whats:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); }
 
-        /* Estilos da Tela de Pagamento PIX Real */
-        .pix-container { text-align: center; padding: 10px 0; }
-        .pix-timer-box { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; padding: 12px; border-radius: 8px; margin: 15px 0; font-weight: 600; }
-        .pix-timer-box span { font-size: 1.3em; color: #d9534f; display: block; margin-top: 5px; font-weight: 700; }
-        .pix-code-box { background-color: #f1f2f6; padding: 10px; border-radius: 8px; word-break: break-all; font-family: monospace; font-size: 0.85em; max-height: 80px; overflow-y: auto; border: 1px solid #ced6e0; margin: 15px 0; }
-        .btn-copiar { background: #3498db; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; font-size: 1em; margin-bottom: 15px; }
+        input[type="time"] {
+            font-size: 0.9em;
+            padding: 8px 10px;
+            max-height: 45px;
+        }
+
+        /* Estilos da Tela de Pagamento PIX na Tela */
+        .pix-container {
+            text-align: center;
+            padding: 10px 0;
+        }
+        .pix-timer-box {
+            background-color: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeeba;
+            padding: 12px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-weight: 600;
+        }
+        .pix-timer-box span {
+            font-size: 1.3em;
+            color: #d9534f;
+            display: block;
+            margin-top: 5px;
+            font-weight: 700;
+        }
+        .pix-code-box {
+            background-color: #f1f2f6;
+            padding: 10px;
+            border-radius: 8px;
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 0.85em;
+            max-height: 80px;
+            overflow-y: auto;
+            border: 1px solid #ced6e0;
+            margin: 15px 0;
+        }
+        .btn-copiar {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1em;
+            margin-bottom: 15px;
+        }
         .btn-copiar:hover { background: #2980b9; }
+        .aviso-whats-confirmacao {
+            background: #e8f8f5;
+            color: #117a65;
+            border: 1px solid #a3e4d7;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 0.9em;
+            line-height: 1.4;
+            margin-top: 15px;
+        }
     </style>
 </head>
 <body>
 
-    <!-- Notificação Toast Flutuante -->
-    <div id="toast-notificacao"></div>
+    <!-- Banner Fixo e Piscando -->
+    <div class="banner-ofertas">
+        <span class="texto-piscando">🎣 Acima de R$ 500 FRETE GRÁTIS! &nbsp;|&nbsp; 🎉 Acima de R$ 1.500 ganhe 30% DE DESCONTO!</span>
+    </div>
 
     <header>
-        <h1>Karaokê Mania</h1>
-        <p>Aluguel de Máquinas de Karaokê Profissionais com Frete Grátis e Milhares de Músicas</p>
+        <h1>Aluguel para Festas</h1>
+        <p id="subtitulo-cidade">Catálogo Completo</p>
     </header>
 
     <div class="container">
         
-        <!-- Seção de Busca de Músicas 100% Integrada via Catálogo Oficial -->
-        <div class="secao-busca-musicas">
-            <h3>🎵 Consulta de Repertório e Músicas Online</h3>
-            <p>Pesquise diretamente no catálogo oficial integrado do nosso sistema:</p>
-            <iframe src="https://www.karaokerj.com.br/catalogo/consulta" class="iframe-container" title="Catálogo de Músicas"></iframe>
-        </div>
-
-        <!-- Categoria Única: Máquinas de Karaokê (Ordem Crescente de Preço) -->
-        <h2 class="categoria-titulo">Nossas Máquinas de Karaokê Disponíveis</h2>
-        <div class="produtos" id="lista-produtos">
-            
-            <!-- Máquina 1 (R$ 120,00) -->
-            <div class="card" data-nome="Máquina Tela 17 Polegadas" data-preco="120.00">
-                <img src="https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcShvgERfsxlBCzWtTD8FuOYd4tQzFe3dGhDks6FOlYFXa90-_dXbt2DV2k212kKIaPiE4RYwVCQQYHcaK3KKAKtMblTb4A_B4yjZwh38v1Z0TYbQxkHnN32VZc&usqp=CAc" alt="Karaokê Tela 17">
-                <h3>Máquina de Karaokê - Tela 17"</h3>
-                <div class="preco">R$ 120,00</div>
+        <!-- Categoria 1: Mesas e Cadeiras -->
+        <h2 class="categoria-titulo">Mesas e Cadeiras</h2>
+        <div class="produtos">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK6GjaWrv5q1w_nIL-3gnFeHJwhfFgOsdOsyNNd29eYg&s=10" alt="Jogo de mesa plástico">
+                <h3>Jogo de Mesa Plástico c/ 4 Cadeiras</h3>
+                <div class="preco">R$ 10,00</div>
                 <div class="controle-qtd">
                     <button class="btn-qtd" onclick="mudarQtd('qtd-1', -1)">-</button>
                     <input type="number" id="qtd-1" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-1', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina de Karaokê - Tela 17 Polegadas', 120.00, 'qtd-1')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Jogo Mesa Plástico 4 Cadeiras', 10.00, 'qtd-1')">Adicionar</button>
             </div>
-
-            <!-- Máquina 2 (R$ 150,00) -->
-            <div class="card" data-nome="Máquina Tela 19 Polegadas" data-preco="150.00">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN8WxDgVE3WPHPQB4Ys05zpGyC3lmVaO0fXjoS9bk6LQ&s=10" alt="Karaokê Tela 19">
-                <h3>Máquina de Karaokê - Tela 19" (Modelo A)</h3>
-                <div class="preco">R$ 150,00</div>
+            <div class="card">
+                <img src="https://images.tcdn.com.br/img/img_prod/836117/mesa_de_plastico_pt_monobloco_quadrada_arqplast_6437_1_795f1b37a133604caca1cdc3ae4991ca.png" alt="Mesa plástico avulsa">
+                <h3>Mesa de Plástico Individual</h3>
+                <div class="preco">R$ 5,00</div>
                 <div class="controle-qtd">
                     <button class="btn-qtd" onclick="mudarQtd('qtd-2', -1)">-</button>
                     <input type="number" id="qtd-2" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-2', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina de Karaokê - Tela 19 Polegadas (Modelo A)', 150.00, 'qtd-2')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Mesa Plástico Individual', 5.00, 'qtd-2')">Adicionar</button>
             </div>
-
-            <!-- Máquina 3 (R$ 150,00) -->
-            <div class="card" data-nome="Máquina Tela 19 Polegadas Qsf" data-preco="150.00">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsf1qL0DnoEFJI4P2aypXNN9OyceR5iewaWPg9aCORvA&s=10" alt="Karaokê Tela 19 Qsf">
-                <h3>Máquina de Karaokê - Tela 19" (Modelo B)</h3>
-                <div class="preco">R$ 150,00</div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhqFmdrSqunTm8I63-MviU0M5RFLrVeQTJ2ghyn9hPDg&s" alt="Cadeira Plástico">
+                <h3>Cadeira Plástico Individual</h3>
+                <div class="preco">R$ 2,00</div>
                 <div class="controle-qtd">
                     <button class="btn-qtd" onclick="mudarQtd('qtd-3', -1)">-</button>
                     <input type="number" id="qtd-3" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-3', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina de Karaokê - Tela 19 Polegadas (Modelo B)', 150.00, 'qtd-3')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Cadeira Plástico Individual', 2.00, 'qtd-3')">Adicionar</button>
             </div>
-
-            <!-- Máquina 4 (R$ 150,00) -->
-            <div class="card" data-nome="Máquina Tela 17 Polegadas Cdn" data-preco="150.00">
-                <img src="https://cdn.awsli.com.br/600x1000/1712/1712733/produto/385149300/ok4-una5uq9303.png" alt="Karaokê Tela 17 Compacto">
-                <h3>Máquina de Karaokê - Tela 17" Compacta</h3>
-                <div class="preco">R$ 150,00</div>
+            
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdsLcBgkeQcuFiTfTwVsrcijXsQgy_wH_-Nx05pY-LYg&s=10" alt="Jogo Ferro 8">
+                <h3>Jogo Mesa Ferro Redonda + 8 Cadeiras</h3>
+                <div class="preco">R$ 70,00</div>
                 <div class="controle-qtd">
                     <button class="btn-qtd" onclick="mudarQtd('qtd-4', -1)">-</button>
                     <input type="number" id="qtd-4" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-4', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina de Karaokê - Tela 17 Polegadas Compacta', 150.00, 'qtd-4')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Jogo Mesa Ferro 8 Lugares', 70.00, 'qtd-4')">Adicionar</button>
             </div>
-
-            <!-- Máquina 5 (R$ 180,00) -->
-            <div class="card" data-nome="Máquina Tela 23 Polegadas" data-preco="180.00">
-                <img src="https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcQp6Yri9HLBsG8k1CUcLQ2JGqSi8uqt51cMesoZ0trq02QHsslZRXit7Q_mtykmKn56X6PegFx3157MxsY-Ywx78m93st9FJ49aNOBkPgXRu3tuQ9tWzhoym1uXci7Bks6sHPwWAQ&usqp=CAc" alt="Karaokê Tela 23">
-                <h3>Máquina de Karaokê - Tela 23"</h3>
-                <div class="preco">R$ 180,00</div>
+            
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTWYtMrmMX5aVFhVTx6IKhBt_kKknoEP1sTdHw488hSEg&s=10" alt="Jogo Ferro 4">
+                <h3>Jogo Mesa Ferro Redonda + 4 Cadeiras</h3>
+                <div class="preco">R$ 40,00</div> 
                 <div class="controle-qtd">
                     <button class="btn-qtd" onclick="mudarQtd('qtd-5', -1)">-</button>
                     <input type="number" id="qtd-5" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-5', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina de Karaokê - Tela 23 Polegadas', 180.00, 'qtd-5')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Jogo Mesa Ferro 4 Lugares', 40.00, 'qtd-5')">Adicionar</button>
             </div>
-
-            <!-- Máquina 6 (R$ 200,00) -->
-            <div class="card" data-nome="Máquina Tela 40 Polegadas" data-preco="200.00">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCAYVaOT95DiKtlC9pJgGvLBGTgp8sDxX51jpy_gYsvw&s=10" alt="Karaokê Tela 40">
-                <h3>Máquina de Karaokê - Tela 40"</h3>
-                <div class="preco">R$ 200,00</div>
+            
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGScdd9OaFYo0nV-_kBlFkfum_Ugexv0vNfcSBgKINKA&s=10" alt="Cadeira Ferro">
+                <h3>Cadeira de Ferro<br>(Unidade)</h3>
+                <div class="preco">R$ 8,00</div>
                 <div class="controle-qtd">
                     <button class="btn-qtd" onclick="mudarQtd('qtd-6', -1)">-</button>
                     <input type="number" id="qtd-6" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-6', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina de Karaokê - Tela 40 Polegadas', 200.00, 'qtd-6')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Cadeira de Ferro', 8.00, 'qtd-6')">Adicionar</button>
             </div>
-
-            <!-- Máquina 7 (R$ 200,00) -->
-            <div class="card" data-nome="Máquina Tela 43 Polegadas Qq4" data-preco="200.00">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ4TLd9O0D0PUV0YRE7CXyuROX1Ofw2ISdMW9rNVYtkT5GeV-1IThitOYk&s=10" alt="Karaokê Tela 43 A">
-                <h3>Máquina de Karaokê - Tela 43" (Modelo A)</h3>
-                <div class="preco">R$ 200,00</div>
+            <div class="card">
+                <img src="https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcQLRl6b_Qj0LcpxoWi7vVXlOC8PhDMUqTqK6OtcrQLGWriWOoP52lRiuK5zUn7tC9dcGVHv26k1fOXQcjyn8NEIefwQxeASW0pcqUE_os7WAS64KqU4ET5_YQ&usqp=CAc" alt="Forros de Mesa">
+                <h3>Forros de Mesa<br>(Unidade)</h3>
+                <div class="preco">R$ 5,00</div>
                 <div class="controle-qtd">
                     <button class="btn-qtd" onclick="mudarQtd('qtd-7', -1)">-</button>
                     <input type="number" id="qtd-7" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-7', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina de Karaokê - Tela 43 Polegadas (Modelo A)', 200.00, 'qtd-7')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Forro de Mesa', 5.00, 'qtd-7')">Adicionar</button>
             </div>
+        </div>
 
-            <!-- Máquina 8 (R$ 200,00) -->
-            <div class="card" data-nome="Máquina Tela 50 Polegadas" data-preco="200.00">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSf0-fkAtaPC8FTcyJK1EdI8sa6JNIMUd_x5EvjQzvgVhuuEgpRbpKnJFA&s=10" alt="Karaokê Tela 50">
-                <h3>Máquina de Karaokê - Tela 50"</h3>
-                <div class="preco">R$ 200,00</div>
+        <!-- Categoria 2: Jogos e Diversão -->
+        <h2 class="categoria-titulo">Jogos e Diversão</h2>
+        <div class="produtos">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsf1qL0DnoEFJI4P2aypXNN9OyceR5iewaWPg9aCORvA&s=10" alt="Karaokê">
+                <h3>Máquina de Karaokê</h3>
+                <div class="preco">R$ 150,00</div>
                 <div class="controle-qtd">
                     <button class="btn-qtd" onclick="mudarQtd('qtd-8', -1)">-</button>
                     <input type="number" id="qtd-8" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-8', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina de Karaokê - Tela 50 Polegadas', 200.00, 'qtd-8')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina de Karaokê', 150.00, 'qtd-8')">Adicionar</button>
             </div>
-
-            <!-- Máquina 9 (R$ 200,00) -->
-            <div class="card" data-nome="Máquina Tela 43 Polegadas Sjh" data-preco="200.00">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-jhKOOxcQf0URByg1lM6WCtknugc90jlsIiJfyvRuKUzEBPK_CxoSnikP&s=10" alt="Karaokê Tela 43 B">
-                <h3>Máquina de Karaokê - Tela 43" (Modelo B)</h3>
-                <div class="preco">R$ 200,00</div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpGWE2dZaIrrsVa1mQjd5RkmD40NC5QlxynmQeZiQtvw&s=10" alt="Sinuca">
+                <h3>Mesa de Sinuca</h3>
+                <div class="preco">R$ 100,00</div>
                 <div class="controle-qtd">
                     <button class="btn-qtd" onclick="mudarQtd('qtd-9', -1)">-</button>
                     <input type="number" id="qtd-9" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-9', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina de Karaokê - Tela 43 Polegadas (Modelo B)', 200.00, 'qtd-9')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Mesa de Sinuca', 100.00, 'qtd-9')">Adicionar</button>
             </div>
-
-            <!-- Máquina 10 (R$ 300,00) -->
-            <div class="card" data-nome="Máquina Karaokê + Tema" data-preco="300.00">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTl4JEK7ed_FeRG5whN4eBBl6PFW-ISzxN0-9QFEj0pig&s=10" alt="Karaokê com Tema">
-                <h3>Karaokê Completo + Tema Especial</h3>
-                <div class="preco">R$ 300,00</div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRApympl4hnYRasqSWjbVMmRzZZ7jw57fvRNFrFE_V_Og&s=10" alt="Totó">
+                <h3>Mesa de Totó (Pebolim)</h3>
+                <div class="preco">R$ 80,00</div>
                 <div class="controle-qtd">
                     <button class="btn-qtd" onclick="mudarQtd('qtd-10', -1)">-</button>
                     <input type="number" id="qtd-10" class="input-qtd" value="1" min="1" readonly>
                     <button class="btn-qtd" onclick="mudarQtd('qtd-10', 1)">+</button>
                 </div>
-                <button class="btn-add" onclick="adicionarAoCarrinho('Máquina Karaokê + Tema Especial', 300.00, 'qtd-10')">Adicionar</button>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Mesa de Totó', 80.00, 'qtd-10')">Adicionar</button>
             </div>
-
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT40skwMwnNogO3Zo61yJ3ZBPrXfJPjzT1ibv-wGj2s7g&s=10" alt="Tobogã">
+                <h3>Tobogã Inflável</h3>
+                <div class="preco">R$ 300,00</div>
+                <div class="controle-qtd">
+                    <button class="btn-qtd" onclick="mudarQtd('qtd-11', -1)">-</button>
+                    <input type="number" id="qtd-11" class="input-qtd" value="1" min="1" readonly>
+                    <button class="btn-qtd" onclick="mudarQtd('qtd-11', 1)">+</button>
+                </div>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Tobogã Inflável', 300.00, 'qtd-11')">Adicionar</button>
+            </div>
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNbr0obdm_DitkW7JRI1uKI9tUffN8PJglzWtS--84Pw&s=10" alt="Pula Pula">
+                <h3>Pula Pula (Cama Elástica)</h3>
+                <div class="preco">R$ 180,00</div>
+                <div class="controle-qtd">
+                    <button class="btn-qtd" onclick="mudarQtd('qtd-12', -1)">-</button>
+                    <input type="number" id="qtd-12" class="input-qtd" value="1" min="1" readonly>
+                    <button class="btn-qtd" onclick="mudarQtd('qtd-12', 1)">+</button>
+                </div>
+                <button class="btn-add" onclick="adicionarAoCarrinho('Pula Pula', 180.00, 'qtd-12')">Adicionar</button>
+            </div>
         </div>
 
     </div>
-
-    <!-- Botão Carrinho Flutuante -->
-    <button class="btn-flutuante" onclick="abrirCarrinho()">
-        🛒 Ver Carrinho <span class="badge" id="badge-carrinho">0</span>
-    </button>
-
-    <!-- Modal do Carrinho / Checkout -->
-    <div id="modal-carrinho" class="modal">
-        <div class="modal-content">
-            <span class="fechar-modal" onclick="fecharCarrinho()">&times;</span>
-            <h2>Seu Carrinho de Aluguel</h2>
-            
-            <div id="itens-carrinho-container">
-                <!-- Itens injetados via JS -->
-            </div>
-
-            <!-- Agendamento e Dias Adicionais -->
-            <div class="resumo-valores" style="margin-top: 15px;">
-                <div class="form-group" style="margin-bottom: 12px;">
-                    <label for="dias-aluguel">Quantidade de Dias de Aluguel (+R$ 100 por dia adicional):</label>
-                    <select id="dias-aluguel" onchange="atualizarTotais()">
-                        <option value="1">1 Dia (Padrão)</option>
-                        <option value="2">2 Dias (+R$ 100)</option>
-                        <option value="3">3 Dias (+R$ 200)</option>
-                        <option value="4">4 Dias (+R$ 300)</option>
-                        <option value="5">5 Dias (+R$ 400)</option>
-                        <option value="7">1 Semana (+R$ 600)</option>
-                    </select>
-                </div>
-
-                <div class="linha-valor">
-                    <span>Subtotal Equipamentos:</span>
-                    <span id="subtotal-produtos">R$ 0,00</span>
-                </div>
-                <div class="linha-valor">
-                    <span>Taxa Dias Adicionais:</span>
-                    <span id="taxa-dias">R$ 0,00</span>
-                </div>
-                <div class="linha-valor">
-                    <span>Frete:</span>
-                    <span class="destaque-desconto">GRÁTIS</span>
-                </div>
-                <div class="linha-valor total">
-                    <span>Total a Pagar:</span>
-                    <span id="total-geral">R$ 0,00</span>
-                </div>
-            </div>
-
-            <!-- Formulário de Dados -->
-            <div id="form-checkout">
-                <div class="form-group">
-                    <label>Nome Completo:</label>
-                    <input type="text" id="cliente-nome" placeholder="Seu nome">
-                </div>
-                <div class="grid-2-cols">
-                    <div class="form-group">
-                        <label>Telefone / WhatsApp:</label>
-                        <input type="text" id="cliente-tel" placeholder="(00) 00000-0000">
-                    </div>
-                    <div class="form-group">
-                        <label>Data da Festa:</label>
-                        <input type="date" id="cliente-data">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Horário Desejado para Entrega:</label>
-                    <input type="time" id="cliente-horario" value="14:00">
-                </div>
-                <div class="form-group">
-                    <label>CEP (Busca Automática Correios):</label>
-                    <input type="text" id="cliente-cep" placeholder="Digite o CEP (Ex: 01001-000)" maxlength="9" onblur="consultarCep(this.value)">
-                </div>
-                <div class="form-group">
-                    <label>Endereço de Entrega (Rua, Número, Bairro, Cidade):</label>
-                    <input type="text" id="cliente-endereco" placeholder="Preenchido automaticamente pelo CEP">
-                </div>
-
-                <p style="font-size: 0.85em; color: #27ae60; font-weight: 600; text-align: center; margin: 10px 0;">
-                    📲 Após a confirmação do pagamento via PIX, você receberá o comprovante e os detalhes diretamente pelo WhatsApp!
-                </p>
-
-                <button class="btn-pagar-pix" onclick="gerarPagamentoPix()">💳 Pagar com PIX no Site</button>
-            </div>
-
-            <!-- Tela de Pagamento PIX Real e Dinâmica -->
-            <div id="area-pix" style="display: none;" class="pix-container">
-                <h3>Pagamento via PIX</h3>
-                <p>Escaneie o QR Code abaixo ou copie a chave PIX gerada com o valor exato do seu pedido:</p>
-                
-                <div style="background: #fff; padding: 10px; display: inline-block; border: 1px solid #ddd; border-radius: 8px;">
-                    <img id="qr-code-dinamico" src="" alt="QR Code PIX Dinâmico">
-                </div>
-
-                <div class="pix-timer-box">
-                    O pagamento deve ser confirmado em:
-                    <span id="timer-pix">14:59</span>
-                </div>
-
-                <div class="pix-code-box" id="codigo-pix-copia">
-                    Carregando chave PIX...
-                </div>
-
-                <button class="btn-copiar" onclick="copiarChavePix()">📋 Copiar Código PIX Copia e Cola</button>
-
-                <p style="font-size: 0.85em; color: #666; margin-top: 10px;">
-                    Assim que efetuar o pagamento, seu agendamento será processado e nossa equipe enviará a confirmação oficial via WhatsApp.
-                </p>
-            </div>
-
-        </div>
-    </div>
-
-    <!-- Rodapé Profissional com Segurança e CNPJ -->
+    
+    <!-- Rodapé Profissional -->
     <footer class="site-footer">
-        <div class="footer-content">
-            <div class="footer-col">
-                <h4>Karaokê Mania</h4>
-                <p>Sua melhor escolha em locação de máquinas de karaokê para festas, aniversários e confraternizações. Diversão garantida com som e imagem de alta qualidade.</p>
-                <p style="margin-top: 10px; font-size: 0.85em;"><strong>CNPJ:</strong> 34.892.102/0001-85</p>
+        <div class="container">
+            <div class="footer-seguro">
+                🔒 Ambiente 100% Seguro
             </div>
-            <div class="footer-col">
-                <h4>Segurança e Garantia</h4>
-                <p>Ambiente 100% criptografado e seguro para seus pagamentos via PIX. Garantia de entrega e suporte técnico especializado durante todo o evento.</p>
-                <div class="selos-seguranca">
-                    <div class="selo-badge">🛡️ Site Seguro SSL</div>
-                    <div class="selo-badge">🔒 PIX Institucional</div>
-                    <div class="selo-badge">✅ Empresa Verificada</div>
-                </div>
+            <div class="footer-info">
+                <p><strong>FESTA ANIMADA LTDA</strong></p>
+                <p>CNPJ: 63.429.293/0001-47</p>
+                <p>Email: contato@festaanimada.com.br</p>
+                <p style="margin-top: 25px; opacity: 0.5; font-size: 0.85em;">&copy; 2026 Festa Animada LTDA. Todos os direitos reservados.</p>
             </div>
-            <div class="footer-col">
-                <h4>Atendimento ao Cliente</h4>
-                <p>Suporte e reservas via WhatsApp e atendimento direto em nosso site.</p>
-                <p>Horário: Seg. a Dom. das 09h às 22h</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Karaokê Mania - Locação de Equipamentos. Todos os direitos reservados.</p>
         </div>
     </footer>
 
-    <script>
-        let carrinho = [];
+    <!-- Botão Flutuante -->
+    <button class="btn-flutuante" onclick="abrirModal()">
+        🛒 Ver Pedido <span class="badge" id="qtd-itens-badge">0</span>
+    </button>
 
+    <!-- Modal do Carrinho e Pagamento -->
+    <div id="meuModal" class="modal">
+        <div class="modal-content" id="conteudo-modal">
+            <span class="fechar-modal" onclick="fecharModal()">&times;</span>
+            <h2>Resumo do Pedido</h2>
+            
+            <div id="itens-carrinho"><p style="color: #a4b0be; font-size: 0.9em; text-align: center;">Nenhum item adicionado.</p></div>
+            
+            <div class="resumo-valores">
+                <div class="linha-valor">
+                    <span>Subtotal:</span>
+                    <span id="valor-subtotal">R$ 0,00</span>
+                </div>
+                <div class="linha-valor destaque-desconto" id="linha-desconto" style="display: none;">
+                    <span>Desconto (30%):</span>
+                    <span id="valor-desconto">- R$ 0,00</span>
+                </div>
+                <div class="linha-valor">
+                    <span>Frete:</span>
+                    <span id="valor-frete">R$ 0,00</span>
+                </div>
+                <div class="linha-valor total">
+                    <span>Total a Pagar:</span>
+                    <span id="valor-total">R$ 0,00</span>
+                </div>
+            </div>
+
+            <h3>Dados para Entrega e Evento</h3>
+            <div class="form-group">
+                <label>Nome Completo</label>
+                <input type="text" id="cli-nome" placeholder="Seu nome">
+            </div>
+            <div class="form-group">
+                <label>WhatsApp</label>
+                <input type="text" id="cli-whats" placeholder="(22) 99999-9999">
+            </div>
+            
+            <div class="grid-2-cols">
+                <div class="form-group">
+                    <label>Data do Evento</label>
+                    <input type="date" id="cli-data">
+                </div>
+                <div class="form-group">
+                    <label>Horário de Início</label>
+                    <input type="time" id="cli-hora">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>CEP</label>
+                <input type="text" id="cli-cep" placeholder="28000-000" oninput="buscarCEP()">
+            </div>
+            <div class="form-group">
+                <label>Cidade</label>
+                <input type="text" id="cli-cidade" placeholder="Preencha o CEP primeiro" readonly>
+            </div>
+            <div class="form-group">
+                <label>Rua e Número</label>
+                <input type="text" id="cli-rua" placeholder="Ex: Rua Direita, 123">
+            </div>
+
+            <div class="form-group">
+                <label>Área de Entrega</label>
+                <select id="cli-area" onchange="calcularValores()">
+                    <option value="0">Retirar no local (Grátis)</option>
+                    <option value="0" disabled>Entrega: Preencha o CEP para calcular</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Forma de Pagamento</label>
+                <select id="cli-pagamento">
+                    <option value="100% Antecipado (PIX)">100% Antecipado via PIX agora</option>
+                    <option value="50% Agora e 50% na Entrega">Pagar 50% via PIX agora e 50% na entrega</option>
+                </select>
+            </div>
+            
+            <button class="btn-whats" onclick="enviarPedidoWhatsApp()">Finalizar Pedido</button>
+        </div>
+    </div>
+
+    <script>
         function mudarQtd(idInput, valor) {
             let input = document.getElementById(idInput);
-            let atual = parseInt(input.value);
-            let novo = atual + valor;
-            if (novo >= 1) {
-                input.value = novo;
+            let novaQtd = parseInt(input.value) + valor;
+            if(novaQtd >= 1) {
+                input.value = novaQtd;
             }
         }
 
-        function mostrarToast(mensagem) {
-            let toast = document.getElementById('toast-notificacao');
-            toast.innerText = mensagem;
-            toast.style.display = 'block';
-            toast.style.opacity = '1';
-            setTimeout(() => {
-                toast.style.opacity = '0';
-                setTimeout(() => { toast.style.display = 'none'; }, 300);
-            }, 2500);
-        }
-
-        function adicionarAoCarrinho(nome, preco, idQtd) {
-            let qtd = parseInt(document.getElementById(idQtd).value);
-            let itemExistente = carrinho.find(item => item.name === nome);
+        function buscarCEP() {
+            let cepInput = document.getElementById('cli-cep').value;
+            let cepLimpo = cepInput.replace(/\D/g, ''); 
             
-            if (itemExistente) {
-                itemExistente.quantity += qtd;
-            } else {
-                carrinho.push({ name: nome, price: preco, quantity: qtd });
-            }
-            
-            atualizarBadge();
-            mostrarToast("✓ " + qtd + "x " + nome + " adicionado ao carrinho!");
-        }
-
-        function atualizarBadge() {
-            let totalItens = carrinho.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('badge-carrinho').innerText = totalItens;
-        }
-
-        function abrirCarrinho() {
-            renderizarCarrinho();
-            document.getElementById('modal-carrinho').style.display = 'block';
-        }
-
-        function fecharCarrinho() {
-            document.getElementById('modal-carrinho').style.display = 'none';
-        }
-
-        function renderizarCarrinho() {
-            let container = document.getElementById('itens-carrinho-container');
-            if (carrinho.length === 0) {
-                container.innerHTML = '<p style="text-align: center; color: #7f8c8d; padding: 20px;">Seu carrinho está vazio.</p>';
-            } else {
-                container.innerHTML = carrinho.map((item, index) => `
-                    <div class="item-carrinho">
-                        <span>${item.quantity}x ${item.name}</span>
-                        <span>R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</span>
-                        <button onclick="removerItem(${index})" style="background:none; border:none; color:#e74c3c; cursor:pointer; font-weight:bold;">✕</button>
-                    </div>
-                `).join('');
-            }
-            atualizarTotais();
-        }
-
-        function removerItem(index) {
-            carrinho.splice(index, 1);
-            atualizarBadge();
-            renderizarCarrinho();
-        }
-
-        function atualizarTotais() {
-            let subtotal = carrinho.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            let diasSelect = document.getElementById('dias-aluguel');
-            let dias = diasSelect ? parseInt(diasSelect.value) : 1;
-            
-            let taxaDias = (dias - 1) * 100;
-            let totalGeral = subtotal + taxaDias;
-
-            document.getElementById('subtotal-produtos').innerText = 'R$ ' + subtotal.toFixed(2).replace('.', ',');
-            document.getElementById('taxa-dias').innerText = 'R$ ' + taxaDias.toFixed(2).replace('.', ',');
-            document.getElementById('total-geral').innerText = 'R$ ' + totalGeral.toFixed(2).replace('.', ',');
-        }
-
-        function consultarCep(cep) {
-            cep = cep.replace(/\D/g, '');
-            if (cep.length !== 8) return;
-            
-            fetch(`https://viacep.com.br/ws/${cep}/json/`)
-                .then(response => response.json())
-                .then(data => {
-                    if (!data.erro) {
-                        document.getElementById('cliente-endereco').value = `${data.logradouro}, Bairro: ${data.bairro}, ${data.localidade} - ${data.uf} (CEP: ${data.cep})`;
-                    } else {
-                        alert('CEP não encontrado. Por favor, digite o endereço manualmente.');
-                    }
-                })
-                .catch(() => {
-                    console.error('Erro ao buscar CEP');
-                });
-        }
-
-        function gerarPagamentoPix() {
-            let nome = document.getElementById('cliente-nome').value;
-            let tel = document.getElementById('cliente-tel').value;
-            let data = document.getElementById('cliente-data').value;
-            let horario = document.getElementById('cliente-horario').value;
-            let endereco = document.getElementById('cliente-endereco').value;
-
-            if (!nome || !tel || !data || !horario || !endereco) {
-                alert('Por favor, preencha todos os campos do formulário antes de prosseguir.');
-                return;
-            }
-
-            if (carrinho.length === 0) {
-                alert('O seu carrinho está vazio.');
-                return;
-            }
-
-            // Calcular valor total atual do pedido para o PIX Dinâmico
-            let subtotal = carrinho.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            let dias = parseInt(document.getElementById('dias-aluguel').value);
-            let totalGeral = subtotal + ((dias - 1) * 100);
-
-            // Gerar payload PIX real formatado com o valor exato
-            let payloadPix = `00020126580014br.gov.bcb.pix0136karaokemania-pix-locacao-oficial5204000053039865802BR5925KARAOKE MANIA LOCACOES6009SAO PAULO62070503***6304`;
-            let payloadCompleto = payloadPix + totalGeral.toFixed(2); // Inclui o valor real do pedido no payload
-
-            document.getElementById('codigo-pix-copia').innerText = payloadCompleto;
-            document.getElementById('qr-code-dinamico').src = `https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(payloadCompleto)}`;
-
-            document.getElementById('form-checkout').style.display = 'none';
-            document.getElementById('area-pix').style.display = 'block';
-            iniciarContagemRegressiva(14, 59);
-        }
-
-        function copiarChavePix() {
-            let textoCopia = document.getElementById('codigo-pix-copia').innerText;
-            navigator.clipboard.writeText(textoCopia).then(() => {
-                alert('Código PIX Copia e Cola copiado com sucesso! A confirmação será enviada via WhatsApp.');
-            });
-        }
-
-        function iniciarContagemRegressiva(minutos, segundos) {
-            let tempo = minutos * 60 + segundos;
-            let timerSpan = document.getElementById('timer-pix');
-            
-            let intervalo = setInterval(function () {
-                let m = Math.floor(tempo / 60);
-                let s = tempo % 60;
-                m = m < 10 ? '0' + m : m;
-                s = s < 10 ? '0' + s : s;
-                timerSpan.innerText = m + ':' + s;
+            if (cepLimpo.length === 8) {
+                document.getElementById('cli-cidade').value = "Buscando...";
                 
-                if (--tempo < 0) {
-                    clearInterval(intervalo);
-                    timerSpan.innerText = 'Expirado';
+                fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (!data.erro) {
+                            document.getElementById('cli-cidade').value = `${data.localidade} -${data.uf}`;
+                            document.getElementById('cli-rua').value = `${data.logradouro},  -${data.bairro}`;
+                            document.getElementById('subtitulo-cidade').innerText = `Catálogo Completo - ${data.localidade}`;
+                            
+                            const localEntrega = data.bairro ? data.bairro : data.localidade;
+                            
+                            const areaSelect = document.getElementById('cli-area');
+                            areaSelect.innerHTML = `
+                                <option value="0">Retirar no local (Grátis)</option>
+                                <option value="40" selected>Entrega em ${localEntrega} - R$ 40,00</option>
+                            `;
+                            
+                            calcularValores();
+                        } else {
+                            document.getElementById('cli-cidade').value = "CEP não encontrado";
+                        }
+                    })
+                    .catch(error => {
+                        console.error("Erro ao buscar CEP", error);
+                        document.getElementById('cli-cidade').value = "";
+                    });
+            }
+        }
+
+        let carrinho = [];
+        let intervalTimerPix = null;
+
+        const modal = document.getElementById("meuModal");
+        function abrirModal() { modal.style.display = "block"; }
+        function fecharModal() { 
+            modal.style.display = "none"; 
+            if(intervalTimerPix) clearInterval(intervalTimerPix);
+        }
+        window.onclick = function(event) { if (event.target == modal) { fecharModal(); } }
+
+        function adicionarAoCarrinho(nome, preco, idInputQtd) {
+            let qtd = parseInt(document.getElementById(idInputQtd).value);
+            
+            let itemExistente = carrinho.find(item => item.nome === nome);
+            if (itemExistente) {
+                itemExistente.qtd += qtd;
+            } else {
+                carrinho.push({ nome, preco, qtd });
+            }
+            
+            let totalItens = carrinho.reduce((acc, item) => acc + item.qtd, 0);
+            document.getElementById('qtd-itens-badge').innerText = totalItens;
+            
+            atualizarCarrinhoHTML();
+            calcularValores();
+            
+            document.getElementById(idInputQtd).value = 1;
+
+            let msgNotificacao = `*ALERTA DE CARRINHO* 🛒\n\nUm cliente acabou de adicionar o seguinte item ao carrinho:\n✅ ${qtd}x${nome}`;
+            let apiUrlNotificacao = `https://api.textmebot.com/send.php?recipient=+5522992195418&apikey=Pskn5LW4qaCv&text=${encodeURIComponent(msgNotificacao)}`;
+            
+            let imgNotif = new Image();
+            imgNotif.src = apiUrlNotificacao;
+        }
+
+        function atualizarCarrinhoHTML() {
+            const divItens = document.getElementById('itens-carrinho');
+            divItens.innerHTML = '';
+            
+            if (carrinho.length === 0) {
+                divItens.innerHTML = '<p style="color: #a4b0be; font-size: 0.9em; text-align: center;">Nenhum item adicionado.</p>';
+            } else {
+                carrinho.forEach((item, index) => {
+                    let totalItem = item.preco * item.qtd;
+                    divItens.innerHTML += `
+                        <div class="item-carrinho">
+                            <span>${item.qtd}x${item.nome} - R$ ${totalItem.toFixed(2).replace('.', ',')}</span>
+                            <button onclick="removerDoCarrinho(${index})" style="background-color: #e74c3c; color: white; border: none; padding: 4px 10px; border-radius: 6px; cursor: pointer; font-size: 0.85em; font-weight: 600;">Remover</button>
+                        </div>
+                    `;
+                });
+            }
+        }
+
+        function removerDoCarrinho(index) {
+            carrinho.splice(index, 1);
+            let totalItens = carrinho.reduce((acc, item) => acc + item.qtd, 0);
+            document.getElementById('qtd-itens-badge').innerText = totalItens;
+            atualizarCarrinhoHTML();
+            calcularValores();
+        }
+
+        function calcularValores() {
+            let subtotal = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
+            let desconto = 0;
+            let frete = parseFloat(document.getElementById('cli-area').value) || 0;
+            let freteGratis = false;
+
+            if (subtotal >= 500 && frete > 0) {
+                frete = 0;
+                freteGratis = true;
+            }
+
+            if (subtotal >= 1500) {
+                desconto = subtotal * 0.30;
+                document.getElementById('linha-desconto').style.display = 'flex';
+            } else {
+                document.getElementById('linha-desconto').style.display = 'none';
+            }
+
+            let totalFinal = subtotal - desconto + frete;
+
+            document.getElementById('valor-subtotal').innerText = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+            document.getElementById('valor-desconto').innerText = `- R$ ${desconto.toFixed(2).replace('.', ',')}`;
+            
+            if(freteGratis) {
+                document.getElementById('valor-frete').innerHTML = `<span style="color:#27ae60;font-weight:bold;">GRÁTIS</span>`;
+            } else {
+                document.getElementById('valor-frete').innerText = `R$ ${frete.toFixed(2).replace('.', ',')}`;
+            }
+            
+            document.getElementById('valor-total').innerText = `R$ ${totalFinal.toFixed(2).replace('.', ',')}`;
+            
+            return { subtotal, desconto, frete, freteGratis, totalFinal };
+        }
+
+        function formatarData(dataString) {
+            if(!dataString) return 'Não informada';
+            const partes = dataString.split('-');
+            return `${partes[2]}/${partes[1]}/${partes[0]}`;
+        }
+
+        function iniciarContagemRegressiva(duracaoSegundos) {
+            let timer = duracaoSegundos;
+            const display = document.getElementById('timer-pix');
+            
+            if (intervalTimerPix) clearInterval(intervalTimerPix);
+            
+            intervalTimerPix = setInterval(function () {
+                let minutos = parseInt(timer / 60, 10);
+                let segundos = parseInt(timer % 60, 10);
+
+                minutos = minutos < 10 ? "0" + minutos : minutos;
+                segundos = segundos < 10 ? "0" + segundos : segundos;
+
+                if (display) display.textContent = minutos + ":" + segundos;
+
+                if (--timer < 0) {
+                    clearInterval(intervalTimerPix);
+                    if (display) display.textContent = "Expirado";
                 }
             }, 1000);
+        }
+
+        function enviarPedidoWhatsApp() {
+            let nome = document.getElementById('cli-nome').value;
+            let whats = document.getElementById('cli-whats').value;
+            let data = document.getElementById('cli-data').value;
+            let hora = document.getElementById('cli-hora').value;
+            let cep = document.getElementById('cli-cep').value;
+            let cidade = document.getElementById('cli-cidade').value;
+            let rua = document.getElementById('cli-rua').value;
+            let pagamento = document.getElementById('cli-pagamento').value;
+
+            if(!nome || !whats || !data || !cep || !rua) {
+                alert("Por favor, preencha todos os campos obrigatórios para entrega.");
+                return;
+            }
+
+            if(carrinho.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+
+            let valores = calcularValores();
+            let itensTexto = carrinho.map(item => `• ${item.qtd}x${item.nome} (R$ ${(item.preco * item.qtd).toFixed(2)})`).join('%0A');
+
+            let mensagem = `*NOVO PEDIDO - ALUGUEL DE FESTA*%0A%0A` +
+                           `*Cliente:* ${nome}%0A` +
+                           `*WhatsApp:* ${whats}%0A` +
+                           `*Data do Evento:* ${formatarData(data)} às ${hora}%0A` +
+                           `*Endereço:* ${rua}, ${cidade} - CEP:${cep}%0A%0A` +
+                           `*Itens do Pedido:*%0A${itensTexto}%0A%0A` +
+                           `*Subtotal:* R$ ${valores.subtotal.toFixed(2)}%0A` +
+                           (valores.desconto > 0 ? `*Desconto:* - R$ ${valores.desconto.toFixed(2)}%0A` : ``) +
+                           `*Frete:* ${valores.freteGratis ? 'GRÁTIS' : 'R$ ' + valores.frete.toFixed(2)}%0A` +
+                           `*Total Geral:* R$ ${valores.totalFinal.toFixed(2)}%0A` +
+                           `*Pagamento:* ${pagamento}`;
+
+            let urlWhatsApp = `https://api.whatsapp.com/send?phone=+5522992195418&text=${mensagem}`;
+            window.open(urlWhatsApp, '_blank');
         }
     </script>
 </body>
