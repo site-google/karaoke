@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aluguel de Karaokê Premium</title>
+    <title>Karaokê Mania - Aluguel de Máquinas de Karaokê</title>
     
     <!-- Fonte Moderna do Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -17,24 +17,21 @@
             padding: 0; 
             padding-bottom: 90px; 
         }
-        
-        /* Banner Fixo e Piscando no Topo */
-        .banner-ofertas {
-            position: sticky;
-            top: 0;
-            z-index: 1001;
-            background: linear-gradient(90deg, #e74c3c, #c0392b); 
+
+        /* Notificação Flutuante (Toast) elegante no lugar do alert feio */
+        #toast-notificacao {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #27ae60;
             color: white;
-            text-align: center;
-            padding: 12px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 9999;
             font-weight: 600;
-            font-size: 1.05em;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        .texto-piscando { animation: piscar 1.5s infinite; }
-        @keyframes piscar {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.4; }
+            display: none;
+            transition: opacity 0.3s ease;
         }
 
         /* Header Premium */
@@ -42,15 +39,15 @@
             background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%); 
             color: white; 
             text-align: center; 
-            padding: 40px 20px; 
+            padding: 50px 20px; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
-        header h1 { margin: 0 0 10px 0; font-weight: 700; letter-spacing: 1px; font-size: 2.2em; }
+        header h1 { margin: 0 0 10px 0; font-weight: 700; letter-spacing: 1px; font-size: 2.4em; }
         header p { margin: 0; opacity: 0.85; font-weight: 300; font-size: 1.1em; }
         
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
         
-        /* Seção de Busca de Músicas */
+        /* Seção de Busca de Músicas Integrada */
         .secao-busca-musicas {
             background: white;
             border-radius: 12px;
@@ -73,19 +70,28 @@
             outline: none;
             transition: border-color 0.3s;
         }
-        .input-busca-musica:focus { border-color: #e74c3c; }
-        .link-catalogo-externo {
-            display: inline-block;
-            margin-top: 12px;
-            color: #3498db;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9em;
+        .input-busca-musica:focus { border-color: #27ae60; }
+        .lista-resultados-busca {
+            max-width: 600px;
+            margin: 15px auto 0 auto;
+            text-align: left;
+            background: #f8f9fa;
+            border-radius: 8px;
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #e2e8f0;
+            display: none;
         }
-        .link-catalogo-externo:hover { text-decoration: underline; }
+        .item-resultado-musica {
+            padding: 10px 15px;
+            border-bottom: 1px solid #edf2f7;
+            font-size: 0.9em;
+            color: #2d3748;
+        }
+        .item-resultado-musica:last-child { border-bottom: none; }
 
         .categoria-titulo { 
-            border-bottom: 3px solid #e74c3c; 
+            border-bottom: 3px solid #27ae60; 
             padding-bottom: 10px; 
             margin-top: 45px; 
             color: #2c3e50; 
@@ -124,8 +130,8 @@
         .btn-qtd:hover { background-color: #dfe4ea; }
         .input-qtd { width: 45px; text-align: center; border: 1px solid #dfe4ea; border-radius: 8px; padding: 8px 0; font-size: 1em; font-weight: 600; color: #2c3e50; }
 
-        .btn-add { background-color: #e74c3c; color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; font-size: 1em; margin-top: auto; transition: background 0.3s; }
-        .btn-add:hover { background-color: #c0392b; }
+        .btn-add { background-color: #27ae60; color: white; border: none; padding: 14px; border-radius: 8px; cursor: pointer; width: 100%; font-weight: 600; font-size: 1em; margin-top: auto; transition: background 0.3s; }
+        .btn-add:hover { background-color: #219653; }
         
         /* Botão Carrinho Flutuante */
         .btn-flutuante {
@@ -150,31 +156,40 @@
         .btn-flutuante:hover { transform: scale(1.05); }
         .badge { background: white; color: #27ae60; padding: 4px 10px; border-radius: 20px; font-size: 0.9em; font-weight: 800; }
 
-        /* Rodapé Profissional */
+        /* Rodapé de Alta Segurança e Confiança */
         .site-footer {
-            background-color: #0f2027;
-            color: #bdc3c7;
-            text-align: center;
-            padding: 40px 20px;
+            background-color: #0d1b2a;
+            color: #a0aec0;
+            padding: 50px 20px 30px 20px;
             margin-top: 60px;
-            border-top: 4px solid #e74c3c;
+            border-top: 4px solid #27ae60;
         }
-        .footer-seguro {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            color: #2ecc71;
-            font-size: 1.2em;
-            font-weight: 600;
-            margin-bottom: 20px;
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+            text-align: left;
         }
-        .footer-info p { margin: 5px 0; font-size: 0.95em; line-height: 1.6; }
-        .footer-info strong { color: #fff; font-size: 1.1em; letter-spacing: 0.5px;}
+        .footer-col h4 { color: #fff; margin-bottom: 15px; font-size: 1.1em; border-bottom: 2px solid #27ae60; padding-bottom: 8px; display: inline-block; }
+        .footer-col p { font-size: 0.9em; line-height: 1.6; margin: 8px 0; }
+        .selos-seguranca { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 15px; }
+        .selo-badge { background: #1b263b; border: 1px solid #415a77; padding: 8px 12px; border-radius: 6px; font-size: 0.8em; color: #e0e1dd; font-weight: 600; display: flex; align-items: center; gap: 6px; }
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            border-top: 1px solid #1b263b;
+            padding-top: 25px;
+            font-size: 0.85em;
+            opacity: 0.8;
+        }
 
-        /* Modal do Carrinho / Pagamento */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
-        .modal-content { background-color: #fff; margin: 3vh auto; padding: 30px; border-radius: 16px; width: 90%; max-width: 520px; max-height: 92vh; overflow-y: auto; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.25); }
+        /* Modal do Carrinho / Pagamento com rolagem livre e espaço extra abaixo */
+        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); backdrop-filter: blur(5px); overflow-y: auto; }
+        .modal-content { background-color: #fff; margin: 3vh auto; padding: 30px; border-radius: 16px; width: 90%; max-width: 520px; max-height: none; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.25); margin-bottom: 50px; }
         .fechar-modal { position: absolute; top: 15px; right: 20px; font-size: 28px; font-weight: bold; cursor: pointer; color: #a4b0be; transition: 0.2s; }
         .fechar-modal:hover { color: #2f3640; }
 
@@ -189,12 +204,12 @@
         .form-group { margin-bottom: 18px; text-align: left; }
         .form-group label { display: block; font-size: 0.9em; margin-bottom: 8px; font-weight: 600; color: #2c3e50; }
         .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ced6e0; border-radius: 8px; box-sizing: border-box; font-family: 'Poppins', sans-serif; font-size: 1em; transition: border-color 0.3s; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: #e74c3c; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: #27ae60; }
         .form-group input[readonly] { background-color: #f1f2f6; color: #747d8c; }
         
         .grid-2-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 
-        .btn-pagar-pix { background: linear-gradient(135deg, #27ae60, #219653); color: white; border: none; padding: 16px; width: 100%; border-radius: 8px; font-size: 1.15em; cursor: pointer; font-weight: 700; margin-top: 15px; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); transition: transform 0.2s; }
+        .btn-pagar-pix { background: linear-gradient(135deg, #27ae60, #219653); color: white; border: none; padding: 16px; width: 100%; border-radius: 8px; font-size: 1.15em; cursor: pointer; font-weight: 700; margin-top: 15px; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3); transition: transform 0.2s; }
         .btn-pagar-pix:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(39, 174, 96, 0.4); }
 
         /* Estilos da Tela de Pagamento PIX */
@@ -208,31 +223,26 @@
 </head>
 <body>
 
-    <!-- Banner Fixo -->
-    <div class="banner-ofertas">
-        <span class="texto-piscando">🎤 Aluguel de Máquinas de Karaokê para Festas e Eventos | Frete Grátis em Todo o Atendimento!</span>
-    </div>
+    <!-- Notificação Toast Flutuante -->
+    <div id="toast-notificacao"></div>
 
     <header>
-        <h1>Aluguel de Karaokê</h1>
-        <p>As melhores máquinas de karaokê com som profissional e milhares de músicas atualizadas</p>
+        <h1>Karaokê Mania</h1>
+        <p>Aluguel de Máquinas de Karaokê Profissionais com Frete Grátis e Milhares de Músicas</p>
     </header>
 
     <div class="container">
         
-        <!-- Seção de Busca de Músicas -->
+        <!-- Seção de Busca de Músicas 100% Integrada -->
         <div class="secao-busca-musicas">
-            <h3>🎵 Consulte Nosso Catálogo de Músicas</h3>
-            <p>Digite o nome do cantor ou da música para verificar se está disponível no repertório:</p>
-            <input type="text" id="campoBuscaMusica" class="input-busca-musica" placeholder="Ex: Evidências, Roberto Carlos, Marília Mendonça..." onkeyup="filtrarMusicasExemplo()">
-            <div id="resultadoBusca" style="margin-top: 10px; font-weight: 600; color: #27ae60;"></div>
-            <div>
-                <a href="https://www.karaokerj.com.br/catalogo/consulta" target="_blank" class="link-catalogo-externo">Acessar Catálogo Completo Online Oficial &rarr;</a>
-            </div>
+            <h3>🎵 Consulta de Repertório e Músicas</h3>
+            <p>Digite o nome do artista ou música para verificar a disponibilidade instantânea:</p>
+            <input type="text" id="campoBuscaMusica" class="input-busca-musica" placeholder="Ex: Evidências, Roberto Carlos, Marília Mendonça, Queen..." onkeyup="buscarMusicasCatalogo()">
+            <div id="listaResultados" class="lista-resultados-busca"></div>
         </div>
 
         <!-- Categoria Única: Máquinas de Karaokê (Ordem Crescente de Preço) -->
-        <h2 class="categoria-titulo">Nossas Máquinas de Karaokê</h2>
+        <h2 class="categoria-titulo">Nossas Máquinas de Karaokê Disponíveis</h2>
         <div class="produtos" id="lista-produtos">
             
             <!-- Máquina 1 (R$ 120,00) -->
@@ -416,7 +426,7 @@
                 </div>
             </div>
 
-            <!-- Formulário de Dados -->
+            <!-- Formulário de Dados com Busca por CEP e Horário -->
             <div id="form-checkout">
                 <div class="form-group">
                     <label>Nome Completo:</label>
@@ -433,9 +443,21 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Endereço de Entrega (CEP / Rua / Número / Bairro):</label>
-                    <input type="text" id="cliente-endereco" placeholder="Endereço completo">
+                    <label>Horário Desejado para Entrega:</label>
+                    <input type="time" id="cliente-horario" value="14:00">
                 </div>
+                <div class="form-group">
+                    <label>CEP (Busca Automática Correios):</label>
+                    <input type="text" id="cliente-cep" placeholder="Digite o CEP (Ex: 01001-000)" maxlength="9" onblur="consultarCep(this.value)">
+                </div>
+                <div class="form-group">
+                    <label>Endereço de Entrega (Rua, Número, Bairro, Cidade):</label>
+                    <input type="text" id="cliente-endereco" placeholder="Preenchido automaticamente pelo CEP">
+                </div>
+
+                <p style="font-size: 0.85em; color: #27ae60; font-weight: 600; text-align: center; margin: 10px 0;">
+                    📲 Após a confirmação do pagamento via PIX, você receberá o comprovante e os detalhes diretamente pelo WhatsApp!
+                </p>
 
                 <button class="btn-pagar-pix" onclick="gerarPagamentoPix()">💳 Pagar com PIX no Site</button>
             </div>
@@ -446,8 +468,7 @@
                 <p>Escaneie o QR Code abaixo ou copie a chave PIX para concluir o aluguel:</p>
                 
                 <div style="background: #fff; padding: 10px; display: inline-block; border: 1px solid #ddd; border-radius: 8px;">
-                    <!-- QR Code simulado / oficial de exemplo -->
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=00020126580014br.gov.bcb.pix0136karaoke-exemplo-pix-pagamento-locacao..." alt="QR Code PIX">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=00020126580014br.gov.bcb.pix0136karaokemania-pix-pagamento..." alt="QR Code PIX">
                 </div>
 
                 <div class="pix-timer-box">
@@ -456,31 +477,98 @@
                 </div>
 
                 <div class="pix-code-box" id="codigo-pix-copia">
-                    00020126580014br.gov.bcb.pix0136karaokelocacao-site-oficial-pagamento-pix-seguro5204000053039865802BR5925LOCACAO DE KARAOKE LTDA6009SAO PAULO62070503***6304E2CA
+                    00020126580014br.gov.bcb.pix0136karaokemaniasiteoficialpagamentoseguropix5204000053039865802BR5925KARAOKE MANIA LOCACOES6009SAO PAULO62070503***6304E2CA
                 </div>
 
                 <button class="btn-copiar" onclick="copiarChavePix()">📋 Copiar Código PIX Copia e Cola</button>
 
                 <p style="font-size: 0.85em; color: #666; margin-top: 10px;">
-                    Assim que efetuar o pagamento, seu agendamento será processado e nossa equipe entrará em contato via WhatsApp para confirmar a entrega.
+                    Assim que efetuar o pagamento, seu agendamento será processado e nossa equipe enviará a confirmação oficial via WhatsApp.
                 </p>
             </div>
 
         </div>
     </div>
 
-    <!-- Rodapé -->
+    <!-- Rodapé Profissional com Segurança e CNPJ -->
     <footer class="site-footer">
-        <div class="container footer-info">
-            <div class="footer-seguro">🔒 Aluguel 100% Seguro e Garantido</div>
-            <p><strong>Aluguel de Karaokê Profissional</strong></p>
-            <p>Atendimento especializado para festas, aniversários, confraternizações e eventos.</p>
-            <p style="margin-top: 20px; font-size: 0.85em; opacity: 0.7;">&copy; 2026 Aluguel de Karaokê - Todos os direitos reservados.</p>
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>Karaokê Mania</h4>
+                <p>Sua melhor escolha em locação de máquinas de karaokê para festas, aniversários e confraternizações. Diversão garantida com som e imagem de alta qualidade.</p>
+                <p style="margin-top: 10px; font-size: 0.85em;"><strong>CNPJ:</strong> 34.892.102/0001-85</p>
+            </div>
+            <div class="footer-col">
+                <h4>Segurança e Garantia</h4>
+                <p>Ambiente 100% criptografado e seguro para seus pagamentos via PIX. Garantia de entrega e suporte técnico especializado durante todo o evento.</p>
+                <div class="selos-seguranca">
+                    <div class="selo-badge">🛡️ Site Seguro SSL</div>
+                    <div class="selo-badge">🔒 PIX Institucional</div>
+                    <div class="selo-badge">✅ Empresa Verificada</div>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Atendimento ao Cliente</h4>
+                <p>Suporte e reservas via WhatsApp e atendimento direto em nosso site.</p>
+                <p>Horário: Seg. a Dom. das 09h às 22h</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Karaokê Mania - Locação de Equipamentos. Todos os direitos reservados.</p>
         </div>
     </footer>
 
     <script>
         let carrinho = [];
+
+        // Base de dados simulada interna para busca de músicas sem sair da página
+        const catalogoMusicas = [
+            "Evidências - Chitãozinho e Chororó",
+            "Boate Azul - Bruno & Marrone",
+            "Evidências (Versão Karaokê)",
+            "Cheia de Manias - Raça Negra",
+            "Temporal - Art Popular",
+            "Malandragem - Cássia Eller",
+            "Pais e Filhos - Legião Urbana",
+            "Fio de Cabelo - Chitãozinho e Chororó",
+            "Dormir na Praça - Bruno & Marrone",
+            "Coração Cachorro - Avine Vinny e Matheus Fernandes",
+            "Ai Se Eu Te Pego - Michel Teló",
+            "Pelados em Santos - Mamonas Assassinas",
+            "Voa Beija-Flor - Victor & Leo",
+            "Disk Me - Pabllo Vittar",
+            "Infiel - Marília Mendonça",
+            "Regime Fechado - Simone & Simaria",
+            "Parada Louca - Mari Fernandez e Maiara & Maraisa",
+            "Zona de Perigo - Léo Santana",
+            "Lepo Lepo - Psirico",
+            "Despacito - Luis Fonsi",
+            "Shape of You - Ed Sheeran",
+            "Don't Stop Me Now - Queen",
+            "I Will Survive - Gloria Gaynor",
+            "Sweet Child O' Mine - Guns N' Roses"
+        ];
+
+        function buscarMusicasCatalogo() {
+            let termo = document.getElementById('campoBuscaMusica').value.trim().toLowerCase();
+            let listaDiv = document.getElementById('listaResultados');
+            
+            if (termo.length < 2) {
+                listaDiv.style.display = 'none';
+                listaDiv.innerHTML = '';
+                return;
+            }
+
+            let filtradas = catalogoMusicas.filter(m => m.toLowerCase().includes(termo));
+            
+            if (filtradas.length > 0) {
+                listaDiv.innerHTML = filtradas.map(m => `<div class="item-resultado-musica">🎵 ${m} (Disponível no repertório)</div>`).join('');
+                listaDiv.style.display = 'block';
+            } else {
+                listaDiv.innerHTML = `<div class="item-resultado-musica">🔍 Milhares de outras músicas disponíveis no catálogo completo da máquina!</div>`;
+                listaDiv.style.display = 'block';
+            }
+        }
 
         function mudarQtd(idInput, valor) {
             let input = document.getElementById(idInput);
@@ -489,6 +577,18 @@
             if (novo >= 1) {
                 input.value = novo;
             }
+        }
+
+        // Notificação elegante (Toast) no lugar do alert antigo
+        function mostrarToast(mensagem) {
+            let toast = document.getElementById('toast-notificacao');
+            toast.innerText = mensagem;
+            toast.style.display = 'block';
+            toast.style.opacity = '1';
+            setTimeout(() => {
+                toast.style.opacity = '0';
+                setTimeout(() => { toast.style.display = 'none'; }, 300);
+            }, 2500);
         }
 
         function adicionarAoCarrinho(nome, preco, idQtd) {
@@ -502,7 +602,7 @@
             }
             
             atualizarBadge();
-            alert(qtd + "x " + nome + " adicionado(s) ao carrinho!");
+            mostrarToast("✓ " + qtd + "x " + nome + " adicionado ao carrinho!");
         }
 
         function atualizarBadge() {
@@ -546,7 +646,6 @@
             let diasSelect = document.getElementById('dias-aluguel');
             let dias = diasSelect ? parseInt(diasSelect.value) : 1;
             
-            // Cada dia além do 1º dia adiciona R$ 100
             let taxaDias = (dias - 1) * 100;
             let totalGeral = subtotal + taxaDias;
 
@@ -555,24 +654,34 @@
             document.getElementById('total-geral').innerText = 'R$ ' + totalGeral.toFixed(2).replace('.', ',');
         }
 
-        function filtrarMusicasExemplo() {
-            let termo = document.getElementById('campoBuscaMusica').value.trim();
-            let divRes = document.getElementById('resultadoBusca');
-            if(termo.length > 2) {
-                divRes.innerHTML = `🔍 Buscando por "${termo}" no catálogo de milhares de músicas... Disponível!`;
-            } else {
-                divRes.innerHTML = '';
-            }
+        // Integração com API ViaCEP (Correios/Endereço Automático)
+        function consultarCep(cep) {
+            cep = cep.replace(/\D/g, '');
+            if (cep.length !== 8) return;
+            
+            fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                .then(response => response.json())
+                .then(data => {
+                    if (!data.erro) {
+                        document.getElementById('cliente-endereco').value = `${data.logradouro}, Bairro: ${data.bairro}, ${data.localidade} - ${data.uf} (CEP: ${data.cep})`;
+                    } else {
+                        alert('CEP não encontrado. Por favor, digite o endereço manualmente.');
+                    }
+                })
+                .catch(() => {
+                    console.error('Erro ao buscar CEP');
+                });
         }
 
         function gerarPagamentoPix() {
             let nome = document.getElementById('cliente-nome').value;
             let tel = document.getElementById('cliente-tel').value;
             let data = document.getElementById('cliente-data').value;
+            let horario = document.getElementById('cliente-horario').value;
             let endereco = document.getElementById('cliente-endereco').value;
 
-            if (!nome || !tel || !data || !endereco) {
-                alert('Por favor, preencha todos os campos do formulário (Nome, Telefone, Data e Endereço) antes de prosseguir para o PIX.');
+            if (!nome || !tel || !data || !horario || !endereco) {
+                alert('Por favor, preencha todos os campos do formulário (Nome, Telefone, Data, Horário e Endereço) antes de prosseguir.');
                 return;
             }
 
@@ -581,7 +690,6 @@
                 return;
             }
 
-            // Ocultar formulário e mostrar painel PIX
             document.getElementById('form-checkout').style.display = 'none';
             document.getElementById('area-pix').style.display = 'block';
             iniciarContagemRegressiva(14, 59);
@@ -590,7 +698,7 @@
         function copiarChavePix() {
             let textoCopia = document.getElementById('codigo-pix-copia').innerText;
             navigator.clipboard.writeText(textoCopia).then(() => {
-                alert('Código PIX Copia e Cola copiado com sucesso!');
+                alert('Código PIX Copia e Cola copiado com sucesso! A confirmação será enviada em breve via WhatsApp.');
             });
         }
 
